@@ -3,1528 +3,655 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>doop - ECサイトに下取りサービスを導入 | ブランド価値と売上の向上</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+    <title>doop下取りサービス | ECサイトの売上向上とリピート率改善を実現</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
     <style>
-        :root {
-            --primary: #2F4F4F;
-            --primary-light: #4A6B6B;
-            --primary-lighter: #66A182;
-            --accent: #E8F4EA;
-            --text-dark: #333333;
-            --text-light: #F5F5F5;
-        }
-        
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            color: var(--text-dark);
-            background-color: #FAFAFA;
+            color: #333333;
         }
         
-        .bg-primary {
-            background-color: var(--primary);
+        .bg-doop-primary {
+            background-color: #2F4F4F;
         }
         
-        .bg-primary-light {
-            background-color: var(--primary-light);
+        .bg-doop-secondary {
+            background-color: #66A182;
         }
         
-        .bg-primary-lighter {
-            background-color: var(--primary-lighter);
+        .bg-doop-accent {
+            background-color: #E8F4EA;
         }
         
-        .bg-accent {
-            background-color: var(--accent);
+        .text-doop-primary {
+            color: #2F4F4F;
         }
         
-        .text-primary {
-            color: var(--primary);
+        .text-doop-secondary {
+            color: #66A182;
         }
         
-        .border-primary {
-            border-color: var(--primary);
+        .border-doop-primary {
+            border-color: #2F4F4F;
+        }
+        
+        .border-doop-secondary {
+            border-color: #66A182;
         }
         
         .btn-primary {
-            background-color: var(--primary);
+            background-color: #66A182;
             color: white;
             transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
-            background-color: var(--primary-light);
-            transform: translateY(-2px);
+            background-color: #548369;
         }
         
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
+        .btn-secondary {
             background-color: transparent;
+            border: 2px solid #66A182;
+            color: #66A182;
             transition: all 0.3s ease;
         }
         
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
+        .btn-secondary:hover {
+            background-color: rgba(102, 161, 130, 0.1);
         }
         
-        .shadow-custom {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .hero-gradient {
+            background: linear-gradient(135deg, #2F4F4F 0%, #1A3636 100%);
         }
         
-        .card {
-            border-radius: 8px;
-            overflow: hidden;
+        .feature-card {
             transition: all 0.3s ease;
         }
         
-        .card:hover {
+        .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
-        .stat-card {
-            border-left: 4px solid var(--primary-lighter);
+        .step-card {
+            transition: all 0.3s ease;
         }
         
-        /* FAQ Accordion Styles */
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+        
         .faq-item {
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .faq-question {
-            cursor: pointer;
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-        
-        /* Progress Bar */
-        .progress-bar-track {
-            height: 8px;
-            width: 100%;
-            background-color: #e2e8f0;
-            border-radius: 4px;
-        }
-        
-        .progress-bar-thumb {
-            height: 8px;
-            background-color: var(--primary-lighter);
-            border-radius: 4px;
-        }
-        
-        /* Testimonial cards */
-        .testimonial-card {
-            position: relative;
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 60px;
-            color: var(--primary-lighter);
-            opacity: 0.3;
-        }
-        
-        /* Chart Styles for demo purposes */
-        .chart-bar {
-            height: 200px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            padding: 0 10px;
-        }
-        
-        .chart-column {
-            width: 40px;
-            background-color: var(--primary-lighter);
-            margin: 0 5px;
-            transition: height 1s ease;
-        }
-        
-        /* Pricing table */
-        .pricing-table {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .pricing-card {
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
         
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .pricing-header {
-            padding: 20px;
-            background-color: var(--primary);
+        .initial-icon {
+            background-color: #66A182;
             color: white;
-            text-align: center;
-        }
-        
-        .pricing-features {
-            padding: 20px;
-        }
-        
-        .pricing-feature {
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-        }
-        
-        .pricing-feature i {
-            margin-right: 10px;
-            color: var(--primary);
-        }
-        
-        .pricing-price {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .pricing-note {
-            font-size: 0.8rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--primary-lighter);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-        
-        .timeline-container {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-        }
-        
-        .timeline-container::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -13px;
-            background-color: white;
-            border: 4px solid var(--primary);
-            top: 15px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .left {
-            left: 0;
-        }
-        
-        .right {
-            left: 50%;
-        }
-        
-        .left::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 22px;
-            width: 0;
-            z-index: 1;
-            right: 30px;
-            border: medium solid white;
-            border-width: 10px 0 10px 10px;
-            border-color: transparent transparent transparent white;
-        }
-        
-        .right::after {
-            left: -13px;
-        }
-        
-        .right::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 22px;
-            width: 0;
-            z-index: 1;
-            left: 30px;
-            border: medium solid white;
-            border-width: 10px 10px 10px 0;
-            border-color: transparent white transparent transparent;
-        }
-        
-        .timeline-content {
-            padding: 20px 30px;
-            background-color: white;
-            position: relative;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        @media screen and (max-width: 768px) {
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-container {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-container::before {
-                left: 60px;
-                border: medium solid white;
-                border-width: 10px 10px 10px 0;
-                border-color: transparent white transparent transparent;
-            }
-            
-            .left::after, .right::after {
-                left: 18px;
-            }
-            
-            .right {
-                left: 0%;
-            }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
         }
         
         /* Animation */
         .fade-in {
-            opacity: 0;
-            transition: opacity 0.5s ease-in;
+            animation: fadeIn 0.8s ease-in-out forwards;
         }
         
-        .fade-in.visible {
-            opacity: 1;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
-<body>
-    <!-- Header Navigation -->
-    <header class="bg-white sticky top-0 z-50 shadow-sm">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white py-4 shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
             <div class="flex items-center">
-                <div class="text-3xl font-bold text-primary">doop</div>
-                <span class="ml-2 px-2 py-1 text-xs bg-primary-lighter text-white rounded-full">FOR BUSINESS</span>
+                <div class="text-2xl font-bold text-doop-primary">doop</div>
             </div>
-            <nav class="hidden md:block">
-                <ul class="flex space-x-8">
-                    <li><a href="#challenges" class="text-gray-600 hover:text-primary">課題と解決策</a></li>
-                    <li><a href="#benefits" class="text-gray-600 hover:text-primary">導入メリット</a></li>
-                    <li><a href="#process" class="text-gray-600 hover:text-primary">導入プロセス</a></li>
-                    <li><a href="#case-studies" class="text-gray-600 hover:text-primary">導入事例</a></li>
-                    <li><a href="#pricing" class="text-gray-600 hover:text-primary">料金プラン</a></li>
-                </ul>
+            <nav class="hidden md:flex items-center">
+                <a href="#features" class="mx-3 text-gray-700 hover:text-doop-secondary">メリット</a>
+                <a href="#howto" class="mx-3 text-gray-700 hover:text-doop-secondary">導入ステップ</a>
+                <a href="#case" class="mx-3 text-gray-700 hover:text-doop-secondary">導入事例</a>
+                <a href="#faq" class="mx-3 text-gray-700 hover:text-doop-secondary">よくある質問</a>
+                <a href="#contact" class="mx-3 px-5 py-2 bg-doop-secondary text-white rounded-md hover:bg-opacity-90">お問い合わせ</a>
             </nav>
-            <div>
-                <a href="#contact" class="btn-primary px-6 py-2 rounded-full text-sm font-medium hidden md:inline-block">資料請求</a>
-                <button class="md:hidden">
-                    <i class="fas fa-bars text-gray-600 text-xl"></i>
+            <div class="md:hidden">
+                <button class="text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-accent to-white">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 md:pr-12">
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-6">
-                    ECサイトに<span class="text-primary-lighter">下取りサービス</span>を導入し、<br>
-                    売上と顧客ロイヤルティを向上
-                </h1>
-                <p class="text-lg md:text-xl text-gray-700 mb-8">
-                    アパレル・家電ブランド向けの完全統合型下取りソリューション。<br>
-                    サステナビリティへの取り組みと収益向上の両立を実現します。
-                </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#contact" class="btn-primary px-8 py-3 rounded-lg text-center font-medium">
-                        無料デモを依頼する
-                    </a>
-                    <a href="#case-studies" class="btn-outline px-8 py-3 rounded-lg text-center font-medium">
-                        導入事例を見る
-                    </a>
-                </div>
-            </div>
-            <div class="md:w-1/2 mt-12 md:mt-0">
-                <div class="relative">
-                    <div class="absolute inset-0 bg-primary rounded-3xl opacity-10 transform rotate-3"></div>
-                    <img src="https://cdn.jsdelivr.net/gh/fakeimg/fakeimg@master/images/bg1.jpg" alt="doopサービスイメージ" class="rounded-3xl shadow-lg relative z-10">
-                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg z-20">
-                        <div class="flex items-center space-x-4">
-                            <div class="text-5xl font-bold text-primary-lighter">14%</div>
-                            <div class="text-sm">
-                                <span class="block font-semibold">平均購入CVR</span>
-                                <span class="text-gray-600">doop導入企業の実績</span>
-                            </div>
-                        </div>
-                    </div>
+    <section class="hero-gradient py-20 md:py-32">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="max-w-3xl mx-auto text-center text-white">
+                <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">ECサイトの売上向上とリピート率改善を実現する下取りサービス</h1>
+                <p class="text-lg md:text-xl opacity-90 mb-10">顧客ロイヤルティを高め、リピート率35%改善、売上20%アップを実現するdoop</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact" class="btn-primary px-8 py-3 rounded-md font-medium">資料ダウンロード</a>
+                    <a href="#contact" class="btn-secondary px-8 py-3 rounded-md font-medium">デモ依頼</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trusted By Section -->
-    <section class="py-10 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <p class="text-center text-gray-500 text-sm mb-8">導入実績のあるブランド</p>
-            <div class="flex flex-wrap justify-center items-center gap-12">
-                <div class="w-32 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-                    <img src="https://cdn.jsdelivr.net/gh/fakeimg/fakeimg@master/images/ba4.jpg" alt="ブランドロゴ" class="w-full">
-                </div>
-                <div class="w-32 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-                    <img src="https://cdn.jsdelivr.net/gh/fakeimg/fakeimg@master/images/ba4.jpg" alt="ブランドロゴ" class="w-full">
-                </div>
-                <div class="w-32 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-                    <img src="https://cdn.jsdelivr.net/gh/fakeimg/fakeimg@master/images/ba4.jpg" alt="ブランドロゴ" class="w-full">
-                </div>
-                <div class="w-32 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-                    <img src="https://cdn.jsdelivr.net/gh/fakeimg/fakeimg@master/images/ba4.jpg" alt="ブランドロゴ" class="w-full">
-                </div>
-                <div class="w-32 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-                    <img src="https://cdn.jsdelivr.net/gh/fakeimg/fakeimg@master/images/ba4.jpg" alt="ブランドロゴ" class="w-full">
-                </div>
+    <!-- Business Problems Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-doop-primary mb-4">ECサイト運営の課題を解決</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">doopの下取りサービス連携で、ECサイト運営の3つの課題を解決します</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Business Challenges Section -->
-    <section id="challenges" class="py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">ECブランドが直面する課題</h2>
-                <p class="text-lg text-gray-600">
-                    アパレルや家電業界のECサイトは、競争激化と環境要求の高まりにより新たな価値提供が求められています。
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card bg-white p-6 shadow-custom fade-in">
-                    <div class="rounded-full bg-accent w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-chart-line text-2xl text-primary"></i>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                    <div class="bg-doop-accent w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-doop-primary" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-primary-light mb-3">顧客獲得コストの上昇</h3>
-                    <p class="text-gray-600 mb-4">
-                        広告費の高騰により、新規顧客獲得コストは年々上昇。利益率を維持するには既存顧客のLTV向上が不可欠です。
+                    <h3 class="text-xl font-bold text-doop-primary mb-3">顧客獲得コストの高騰</h3>
+                    <p class="text-gray-600">
+                        広告費の上昇や競争激化により、新規顧客獲得コストが年々増加。投資対効果が悪化しています。
                     </p>
-                    <div class="stat-card bg-gray-50 p-4 rounded">
-                        <p class="text-sm text-gray-500">市場平均</p>
-                        <p class="text-2xl font-bold text-primary">+37%</p>
-                        <p class="text-xs text-gray-500">過去2年間の顧客獲得コスト上昇率</p>
-                    </div>
                 </div>
-
-                <div class="card bg-white p-6 shadow-custom fade-in" style="animation-delay: 0.2s;">
-                    <div class="rounded-full bg-accent w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-leaf text-2xl text-primary"></i>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                    <div class="bg-doop-accent w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-doop-primary" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-primary-light mb-3">サステナビリティへの圧力</h3>
-                    <p class="text-gray-600 mb-4">
-                        消費者や投資家からのESG要求の高まりにより、環境負荷削減への具体的な取り組みが求められています。
+                    <h3 class="text-xl font-bold text-doop-primary mb-3">リピート率の低下</h3>
+                    <p class="text-gray-600">
+                        顧客の購買サイクルが長く、一度の購入で離脱するケースが増加。リピート率が年々低下しています。
                     </p>
-                    <div class="stat-card bg-gray-50 p-4 rounded">
-                        <p class="text-sm text-gray-500">調査結果</p>
-                        <p class="text-2xl font-bold text-primary">73%</p>
-                        <p class="text-xs text-gray-500">のZ世代消費者がサステナブルなブランドを選好</p>
-                    </div>
                 </div>
-
-                <div class="card bg-white p-6 shadow-custom fade-in" style="animation-delay: 0.4s;">
-                    <div class="rounded-full bg-accent w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-box text-2xl text-primary"></i>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                    <div class="bg-doop-accent w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-doop-primary" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-primary-light mb-3">在庫過多と返品処理</h3>
-                    <p class="text-gray-600 mb-4">
-                        季節商品の在庫過多や返品処理は、利益率低下と環境負荷の増大につながっています。
+                    <h3 class="text-xl font-bold text-doop-primary mb-3">在庫処分の課題</h3>
+                    <p class="text-gray-600">
+                        過剰在庫や返品在庫の処分に関するコストと環境負荷が増大。効率的な循環の仕組みが求められています。
                     </p>
-                    <div class="stat-card bg-gray-50 p-4 rounded">
-                        <p class="text-sm text-gray-500">業界データ</p>
-                        <p class="text-2xl font-bold text-primary">12.5%</p>
-                        <p class="text-xs text-gray-500">アパレル業界の平均返品率</p>
-                    </div>
                 </div>
-            </div>
-
-            <div class="mt-16 pt-8 border-t border-gray-200">
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
-                        <h3 class="text-2xl font-bold text-primary mb-4">doopの下取りサービスが解決します</h3>
-                        <p class="text-gray-600 mb-6">
-                            doopは、これらの課題を解決するための「循環型ビジネスモデル」を提供します。お客様のECサイトに下取り機能を導入することで、顧客エンゲージメントの向上、環境負荷の削減、そして売上の増加を同時に実現します。
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-primary-lighter mt-1 mr-2"></i>
-                                <span>顧客の再購入を促進し、LTVを向上</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-primary-lighter mt-1 mr-2"></i>
-                                <span>サステナビリティへの取り組みを数値で可視化</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-primary-lighter mt-1 mr-2"></i>
-                                <span>リサイクル・アップサイクルによる循環型モデルの構築</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="md:w-1/2">
-                        <img src="https://cdn.jsdelivr.net/gh/fakeimg/fakeimg@master/images/bg2.jpg" alt="doopソリューション" class="rounded-lg shadow-lg">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="benefits" class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">doop導入のビジネスメリット</h2>
-                <p class="text-lg text-gray-600">
-                    doopの下取りサービス導入により、ECサイトは多面的な事業成果を実現できます。
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                <div class="card bg-white p-6 shadow-custom fade-in">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-primary-light">売上向上</h3>
-                        <i class="fas fa-chart-line text-2xl text-primary-lighter"></i>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        下取りポイントにより再購入を促進し、客単価と購入頻度を向上させます。
-                    </p>
-                    <div class="mt-4">
-                        <div class="flex justify-between text-sm mb-1">
-                            <span>平均向上率</span>
-                            <span class="font-semibold">16.8%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card bg-white p-6 shadow-custom fade-in">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-primary-light">顧客ロイヤルティ</h3>
-                        <i class="fas fa-heart text-2xl text-primary-lighter"></i>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        下取りサイクルを通じて継続的な顧客関係を構築し、リピート率を高めます。
-                    </p>
-                    <div class="mt-4">
-                        <div class="flex justify-between text-sm mb-1">
-                            <span>リピート率向上</span>
-                            <span class="font-semibold">+23%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card bg-white p-6 shadow-custom fade-in" style="animation-delay: 0.4s;">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-primary-light">ブランド価値向上</h3>
-                        <i class="fas fa-star text-2xl text-primary-lighter"></i>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        サステナビリティへの取り組みにより、ブランドイメージと顧客満足度が向上します。
-                    </p>
-                    <div class="mt-4">
-                        <div class="flex justify-between text-sm mb-1">
-                            <span>ブランド好感度</span>
-                            <span class="font-semibold">+31%</span>
-                        </div>
-                        <div class="progress-bar-track">
-                            <div class="progress-bar-thumb" style="width: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card bg-white p-6 shadow-custom fade-in" style="animation-delay: 0.6s;">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-primary-light">ESG対応</h3>
-                        <i class="fas fa-globe text-2xl text-primary-lighter"></i>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        環境負荷削減の数値化により、ESG投資家や環境意識の高い顧客にアピールできます。
-                    </p>
-                    <div class="mt-4">
-                        <div class="flex justify-between text-sm mb-1">
-                            <span>CO2削減効果</span>
-                            <span class="font-semibold">年間8.2t</span>
-                        </div>
-                        <div class="progress-bar-track">
-                            <div class="progress-bar-thumb" style="width: 65%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
-                <h3 class="text-2xl font-bold text-primary mb-6 text-center">導入企業の事業KPI改善実績</h3>
-                <div class="chart-bar">
-                    <div class="flex flex-col items-center">
-                        <div class="chart-column" style="height: 40%"></div>
-                        <div class="mt-2 text-sm">顧客獲得コスト</div>
-                        <div class="text-primary-lighter font-bold">-18%</div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="chart-column" style="height: 65%"></div>
-                        <div class="mt-2 text-sm">顧客生涯価値</div>
-                        <div class="text-primary-lighter font-bold">+24%</div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="chart-column" style="height: 80%"></div>
-                        <div class="mt-2 text-sm">リピート率</div>
-                        <div class="text-primary-lighter font-bold">+33%</div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="chart-column" style="height: 55%"></div>
-                        <div class="mt-2 text-sm">新規顧客獲得</div>
-                        <div class="text-primary-lighter font-bold">+14%</div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="chart-column" style="height: 90%"></div>
-                        <div class="mt-2 text-sm">サステナビリティ</div>
-                        <div class="text-primary-lighter font-bold">+42%</div>
-                    </div>
-                </div>
-                <p class="text-center text-sm text-gray-500 mt-6">※導入1年後の平均改善率（2023年調査、n=24社）</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="process" class="py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">簡単3ステップで導入完了</h2>
-                <p class="text-lg text-gray-600">
-                    API連携やShopifyアプリを使用して、最短2週間で下取りサービスを開始できます。<br>
-                    すべての業務はdoopがサポートするので、貴社の運用負担はほとんどありません。
-                </p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-container left fade-in">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-3">
-                            <div class="w-8 h-8 rounded-full bg-primary-lighter text-white flex items-center justify-center mr-3">
-                                <span>1</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-primary">簡単システム連携</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            doopのAPIまたはShopifyアプリを使って、ECサイトと連携します。カスタマイズも可能で、貴社のブランドイメージに合わせた設計が可能です。
-                        </p>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <div class="flex items-center">
-                                <i class="fas fa-code text-primary-lighter mr-3"></i>
-                                <div>
-                                    <p class="font-medium">技術的要件</p>
-                                    <p class="text-sm text-gray-500">REST API対応、またはShopify/WooCommerceプラグイン</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-container right fade-in" style="animation-delay: 0.3s;">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-3">
-                            <div class="w-8 h-8 rounded-full bg-primary-lighter text-white flex items-center justify-center mr-3">
-                                <span>2</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-primary">収集・査定フロー構築</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            下取り品の回収から査定、ポイント還元までのフローを構築します。すべての物流と査定業務はdoopが担当するため、貴社の業務負担はありません。
-                        </p>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <div class="flex items-center">
-                                <i class="fas fa-truck text-primary-lighter mr-3"></i>
-                                <div>
-                                    <p class="font-medium">対応エリア</p>
-                                    <p class="text-sm text-gray-500">全国対応（離島を除く）</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-container left fade-in" style="animation-delay: 0.6s;">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-3">
-                            <div class="w-8 h-8 rounded-full bg-primary-lighter text-white flex items-center justify-center mr-3">
-                                <span>3</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-primary">サービス開始・効果測定</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            下取りサービスの開始後も、専任のサクセスマネージャーがサポートします。KPIダッシュボードで効果測定や改善提案を継続的に行います。
-                        </p>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <div class="flex items-center">
-                                <i class="fas fa-chart-pie text-primary-lighter mr-3"></i>
-                                <div>
-                                    <p class="font-medium">サポート体制</p>
-                                    <p class="text-sm text-gray-500">専任担当者によるKPI改善サポート（月次レポート含む）</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-16">
-                <a href="#contact" class="btn-primary px-8 py-3 rounded-lg inline-block font-medium">
-                    無料相談・お見積りを依頼する
-                </a>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="py-16 md:py-24 bg-accent">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">他にはない3つの強み</h2>
-                <p class="text-lg text-gray-600">
-                    doopの下取りサービスは、他のサービスとは一線を画す独自の強みがあります。
+    <section id="features" class="py-16 md:py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-doop-primary mb-4">doop導入のビジネスメリット</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    ECサイトへの下取りサービス導入で、売上とリピート率を同時に向上します
                 </p>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card bg-white p-6 shadow-custom fade-in">
-                    <div class="h-12 mb-6">
-                        <i class="fas fa-plug text-4xl text-primary-lighter"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary-light mb-3">シームレスな連携</h3>
-                    <p class="text-gray-600">
-                        ECサイトへの統合が容易で、ユーザー体験を損なうことなく下取りプロセスを実現。Shopifyアプリでは最短1日で導入可能です。
-                    </p>
-                    <ul class="mt-4 space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-primary-lighter mt-1 mr-2"></i>
-                            <span class="text-sm">API連携（RESTful API）</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-primary-lighter mt-1 mr-2"></i>
-                            <span class="text-sm">Shopifyアプリ対応</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="card bg-white p-6 shadow-custom fade-in" style="animation-delay: 0.3s;">
-                    <div class="h-12 mb-6">
-                        <i class="fas fa-cogs text-4xl text-primary-lighter"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary-light mb-3">完全運用代行</h3>
-                    <p class="text-gray-600">
-                        査定、物流、カスタマーサポートまで、すべての運用をdoopが代行。貴社の運用負担を最小限に抑えます。
-                    </p>
-                    <ul class="mt-4 space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-primary-lighter mt-1 mr-2"></i>
-                            <span class="text-sm">全国対応の宅配回収</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-primary-lighter mt-1 mr-2"></i>
-                            <span class="text-sm">専門スタッフによる査定</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-primary-lighter mt-1 mr-2"></i>
-                            <span class="text-sm">エンドユーザーサポート対応</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="card bg-white p-6 shadow-custom fade-in" style="animation-delay: 0.6s;">
-                    <div class="h-12 mb-6">
-                        <i class="fas fa-chart-bar text-4xl text-primary-lighter"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary-light mb-3">データ活用</h3>
-                    <p class="text-gray-600">
-                        下取り情報を活用した顧客インサイト分析と、サステナビリティ指標の可視化で貴社のマーケティングを強化します。
-                    </p>
-                    <ul class="mt-4 space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-primary-lighter mt-1 mr-2"></i>
-                            <span class="text-sm">顧客購買サイクル分析</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-primary-lighter mt-1 mr-2"></i>
-                            <span class="text-sm">商品寿命・満足度データ</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-primary-lighter mt-1 mr-2"></i>
-                            <span class="text-sm">サステナビリティ貢献レポート</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Studies Section -->
-    <section id="case-studies" class="py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">導入事例</h2>
-                <p class="text-lg text-gray-600">
-                    多様な業種のEC運営企業がdoopの下取りサービスを導入し、成果を上げています。
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="card bg-white shadow-custom overflow-hidden fade-in">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://cdn.jsdelivr.net/gh/fakeimg/fakeimg@master/images/bg3.jpg" alt="アパレルブランド導入事例" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <img src="https://placehold.co/48x48/66A182/ffffff?text=Logo+1" alt="ブランドロゴ" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-primary-light">A株式会社</h3>
-                                <p class="text-sm text-gray-500">サステナブルアパレルブランド</p>
-                            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md feature-card border-t-4 border-doop-secondary">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-doop-primary mb-3">売上向上</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-3xl font-bold text-doop-secondary mr-2">20%</span>
+                            <span class="text-gray-600">平均売上アップ</span>
                         </div>
                         <p class="text-gray-600 mb-6">
-                            サステナビリティを重視するアパレルブランドとして、下取りサービスを導入。古着の回収率向上と再購入促進によりリピート率が大幅に向上しました。
+                            下取り利用ユーザーは非利用者と比較して平均購入単価が上昇。
+                            また、ポイント還元によって再購入を促進することで全体売上が向上します。
                         </p>
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="bg-gray-50 p-3 rounded">
-                                <p class="text-sm text-gray-500">リピート率</p>
-                                <p class="text-2xl font-bold text-primary">+28%</p>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded">
-                                <p class="text-sm text-gray-500">平均客単価</p>
-                                <p class="text-2xl font-bold text-primary">+17%</p>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded">
-                                <p class="text-sm text-gray-500">下取り参加率</p>
-                                <p class="text-2xl font-bold text-primary">23%</p>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded">
-                                <p class="text-sm text-gray-500">新規顧客増加</p>
-                                <p class="text-2xl font-bold text-primary">+12%</p>
-                            </div>
-                        </div>
-                        <div class="border-t pt-4">
-                            <p class="italic text-gray-600">
-                                「下取りサービス導入により、顧客のライフサイクル全体に関わることができるようになり、サステナビリティへの取り組みを具体化できました。売上向上だけでなく、ブランド価値も高まっています。」
-                            </p>
-                            <p class="text-sm text-gray-500 mt-2">- マーケティング責任者 山田様</p>
-                        </div>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>平均購入単価の上昇</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>購入頻度の増加</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>商品ラインナップ拡充の機会</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="card bg-white shadow-custom overflow-hidden fade-in" style="animation-delay: 0.3s;">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://cdn.jsdelivr.net/gh/fakeimg/fakeimg@master/images/bg3.jpg" alt="家電ブランド導入事例" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <img src="https://placehold.co/48x48/66A182/ffffff?text=Logo+2" alt="ブランドロゴ" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-primary-light">B株式会社</h3>
-                                <p class="text-sm text-gray-500">スマート家電メーカー</p>
-                            </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md feature-card border-t-4 border-doop-secondary">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-doop-primary mb-3">リピート率改善</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-3xl font-bold text-doop-secondary mr-2">35%</span>
+                            <span class="text-gray-600">リピート率向上</span>
                         </div>
                         <p class="text-gray-600 mb-6">
-                            小型家電の買い替えサイクルを促進するために下取りサービスを導入。顧客の買い替え時期の予測精度が向上し、適切なタイミングでのマーケティングが可能に。
+                            下取りサービスを利用した顧客は、ブランドへのロイヤルティが高まり、リピート率が大幅に改善します。ポイント還元によるリピート促進効果も高いです。
                         </p>
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="bg-gray-50 p-3 rounded">
-                                <p class="text-sm text-gray-500">買い替え率</p>
-                                <p class="text-2xl font-bold text-primary">+32%</p>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded">
-                                <p class="text-sm text-gray-500">下取りポイント使用率</p>
-                                <p class="text-2xl font-bold text-primary">89%</p>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded">
-                                <p class="text-sm text-gray-500">リサイクル率</p>
-                                <p class="text-2xl font-bold text-primary">+63%</p>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded">
-                                <p class="text-sm text-gray-500">顧客満足度</p>
-                                <p class="text-2xl font-bold text-primary">4.8/5</p>
-                            </div>
-                        </div>
-                        <div class="border-t pt-4">
-                            <p class="italic text-gray-600">
-                                「従来は廃棄されていた製品を適切に回収・リサイクルすることで環境負荷を削減しながら、顧客の買い替えも促進できるという一石二鳥のサービスです。導入コストを大幅に上回るROIを実現できました。」
-                            </p>
-                            <p class="text-sm text-gray-500 mt-2">- EC事業部長 佐藤様</p>
-                        </div>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>顧客ロイヤルティの向上</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>購買サイクルの短縮化</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>競合他社への流出防止</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="#contact" class="btn-outline px-8 py-3 rounded-lg inline-block font-medium">
-                    詳細な導入事例資料を請求する
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">料金プラン</h2>
-                <p class="text-lg text-gray-600">
-                    企業規模やニーズに合わせた柔軟な料金体系をご用意しています。<br>
-                    すべてのプランで下取りサービスの主要機能をご利用いただけます。
+    <!-- Implementation Steps -->
+    <section id="howto" class="py-16 md:py-24 bg-doop-accent">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-doop-primary mb-4">簡単3ステップで導入完了</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    最短2週間でECサイトへの下取りサービス導入が可能です
                 </p>
             </div>
-
-            <div class="pricing-table mb-12">
-                <div class="pricing-card fade-in">
-                    <div class="pricing-header bg-primary-light">
-                        <h3 class="text-xl font-bold">スタンダードプラン</h3>
-                        <p class="text-sm mt-1 opacity-75">中小規模のECサイト向け</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md step-card relative">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-doop-primary text-white flex items-center justify-center text-xl font-bold">
+                        1
                     </div>
-                    <div class="pricing-features">
-                        <div class="pricing-price">月額 ¥98,000~</div>
-                        <p class="pricing-note">※査定件数に応じた従量課金あり</p>
-                        
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Shopify/WooCommerceプラグイン</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>宅配回収・査定代行</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>顧客サポート代行</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>基本分析レポート（月次）</span>
-                        </div>
-                        <div class="pricing-feature text-gray-400">
-                            <i class="fas fa-times-circle"></i>
-                            <span>カスタムUI開発</span>
-                        </div>
-                        <div class="pricing-feature text-gray-400">
-                            <i class="fas fa-times-circle"></i>
-                            <span>専任サクセスマネージャー</span>
-                        </div>
-                        
-                        <div class="mt-8 text-center">
-                            <a href="#contact" class="btn-outline px-6 py-2 rounded-lg inline-block font-medium text-sm">
-                                お見積り依頼
-                            </a>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-doop-primary mb-4">ヒアリング</h3>
+                    <p class="text-gray-600 mb-6">
+                        貴社の課題やニーズをヒアリングし、最適な下取りサービスプランをご提案します。
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>ECサイト分析・課題特定</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>対象商品・査定条件の決定</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>カスタマイズプランのご提案</span>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="pricing-card fade-in transform scale-105 z-10" style="animation-delay: 0.3s;">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary-lighter text-white px-4 py-1 rounded-full text-sm font-medium">
-                        おすすめ
+                
+                <div class="bg-white p-8 rounded-lg shadow-md step-card relative">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-doop-primary text-white flex items-center justify-center text-xl font-bold">
+                        2
                     </div>
-                    <div class="pricing-header bg-primary">
-                        <h3 class="text-xl font-bold">ビジネスプラン</h3>
-                        <p class="text-sm mt-1 opacity-75">中〜大規模のECサイト向け</p>
-                    </div>
-                    <div class="pricing-features">
-                        <div class="pricing-price">月額 ¥198,000~</div>
-                        <p class="pricing-note">※査定件数に応じた従量課金あり</p>
-                        
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>API連携カスタム対応</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>宅配回収・査定代行</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>顧客サポート代行</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>詳細分析レポート（週次）</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>カスタムUI開発</span>
-                        </div>
-                        <div class="pricing-feature text-gray-400">
-                            <i class="fas fa-times-circle"></i>
-                            <span>専任サクセスマネージャー</span>
-                        </div>
-                        
-                        <div class="mt-8 text-center">
-                            <a href="#contact" class="btn-primary px-6 py-2 rounded-lg inline-block font-medium text-sm">
-                                お見積り依頼
-                            </a>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-doop-primary mb-4">簡単システム連携</h3>
+                    <p class="text-gray-600 mb-6">
+                        自社ECサイトにタグを埋め込むだけ。実装は全てdoop専任担当が行うため貴社負担は一切ございません。
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Shopifyのほか各種CMS対応</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>REST API対応</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>専任エンジニアのサポート</span>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="pricing-card fade-in" style="animation-delay: 0.6s;">
-                    <div class="pricing-header bg-primary-light">
-                        <h3 class="text-xl font-bold">エンタープライズ</h3>
-                        <p class="text-sm mt-1 opacity-75">大規模ECブランド向け</p>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md step-card relative">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-doop-primary text-white flex items-center justify-center text-xl font-bold">
+                        3
                     </div>
-                    <div class="pricing-features">
-                        <div class="pricing-price">お問い合わせ</div>
-                        <p class="pricing-note">※カスタム要件に応じた個別見積</p>
-                        
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>フルカスタムAPI連携</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>宅配回収・査定代行</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>プレミアムカスタマーサポート</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>高度分析レポート（リアルタイム）</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>カスタムUI開発</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>専任サクセスマネージャー</span>
-                        </div>
-                        
-                        <div class="mt-8 text-center">
-                            <a href="#contact" class="btn-outline px-6 py-2 rounded-lg inline-block font-medium text-sm">
-                                お問い合わせ
-                            </a>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-doop-primary mb-4">運用開始</h3>
+                    <p class="text-gray-600 mb-6">
+                        下取り対象商品や査定基準のカスタマイズを行い、スムーズに運用を開始。専任サポートがしっかりとバックアップします。
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>専任スタッフによるオンボーディングサポート</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>定期レポート資料による運用モニタリング</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>継続的な改善提案</span>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto fade-in">
-                <h3 class="text-2xl font-bold text-primary mb-6 text-center">ROI試算例</h3>
-                <p class="text-center text-gray-600 mb-8">
-                    doopの下取りサービス導入により、以下のような投資対効果が期待できます。
-                </p>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
-                        <thead>
-                            <tr class="bg-gray-50">
-                                <th class="px-4 py-3 text-primary-light">項目</th>
-                                <th class="px-4 py-3 text-primary-light">1年目</th>
-                                <th class="px-4 py-3 text-primary-light">2年目</th>
-                                <th class="px-4 py-3 text-primary-light">3年目</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b">
-                                <td class="px-4 py-3 font-medium">初期投資</td>
-                                <td class="px-4 py-3 text-gray-600">¥500,000</td>
-                                <td class="px-4 py-3 text-gray-600">-</td>
-                                <td class="px-4 py-3 text-gray-600">-</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="px-4 py-3 font-medium">月額費用</td>
-                                <td class="px-4 py-3 text-gray-600">¥2,376,000</td>
-                                <td class="px-4 py-3 text-gray-600">¥2,376,000</td>
-                                <td class="px-4 py-3 text-gray-600">¥2,376,000</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="px-4 py-3 font-medium">追加売上増加</td>
-                                <td class="px-4 py-3 text-green-600">¥12,500,000</td>
-                                <td class="px-4 py-3 text-green-600">¥18,750,000</td>
-                                <td class="px-4 py-3 text-green-600">¥25,000,000</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="px-4 py-3 font-medium">顧客LTV向上</td>
-                                <td class="px-4 py-3 text-green-600">¥3,200,000</td>
-                                <td class="px-4 py-3 text-green-600">¥6,400,000</td>
-                                <td class="px-4 py-3 text-green-600">¥9,600,000</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="px-4 py-3 font-medium">広告費削減</td>
-                                <td class="px-4 py-3 text-green-600">¥1,800,000</td>
-                                <td class="px-4 py-3 text-green-600">¥2,400,000</td>
-                                <td class="px-4 py-3 text-green-600">¥3,000,000</td>
-                            </tr>
-                            <tr class="border-b bg-gray-50">
-                                <td class="px-4 py-3 font-bold">年間利益改善</td>
-                                <td class="px-4 py-3 font-bold text-primary">¥14,624,000</td>
-                                <td class="px-4 py-3 font-bold text-primary">¥25,174,000</td>
-                                <td class="px-4 py-3 font-bold text-primary">¥35,224,000</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 font-bold">ROI</td>
-                                <td class="px-4 py-3 font-bold text-primary">509%</td>
-                                <td class="px-4 py-3 font-bold text-primary">960%</td>
-                                <td class="px-4 py-3 font-bold text-primary">1,223%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p class="text-center text-sm text-gray-500 mt-6">※モデルケース: 年商5億円、月間注文数2,000件のアパレルECの場合</p>
-                <p class="text-center mt-4">
-                    <a href="#contact" class="text-primary-lighter hover:underline inline-flex items-center">
-                        <span>貴社専用のROI試算を依頼する</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Strengths Section -->
     <section class="py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">導入企業の声</h2>
-                <p class="text-lg text-gray-600">
-                    多くの企業が下取りサービスの導入によって具体的な成果を実感しています。
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-doop-primary mb-4">他にはない3つの強み</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    doopの下取りサービスが選ばれる理由
                 </p>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="testimonial-card bg-white p-6 shadow-custom rounded-lg fade-in">
-                    <div class="flex items-center mb-6">
-                        <img src="https://placehold.co/64x64/66A182/ffffff?text=User+1" alt="顧客写真" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold text-gray-800">K.N 様</h4>
-                            <p class="text-sm text-gray-600">A株式会社<br>マーケティング部長</p>
-                        </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                    <div class="bg-doop-accent w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-doop-primary" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M13 7H7v6h6V7z" />
+                            <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clip-rule="evenodd" />
+                        </svg>
                     </div>
-                    <p class="text-gray-600 mb-4">
-                        導入前は下取りの運用負担が懸念でしたが、doopがすべて対応してくれるので、自社はマーケティングに集中できています。顧客からの評価も高く、リピート率が導入前と比べて20%以上向上しました。
+                    <h3 class="text-xl font-bold text-doop-primary mb-3">Shopify完全統合</h3>
+                    <p class="text-gray-600 mb-6">
+                        Shopifyストアに完全統合されたシームレスな体験を提供。管理画面からすべての下取り関連業務を一元管理できます。
                     </p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-
-                <div class="testimonial-card bg-white p-6 shadow-custom rounded-lg fade-in" style="animation-delay: 0.3s;">
-                    <div class="flex items-center mb-6">
-                        <img src="https://placehold.co/64x64/66A182/ffffff?text=User+2" alt="顧客写真" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold text-gray-800">M.T 様</h4>
-                            <p class="text-sm text-gray-600">B株式会社<br>EC事業部 課長</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        家電の買い替えを促進するために導入しましたが、予想以上の効果がありました。特に下取りポイントによる自社ECでの再購入率が高く、LTVが大幅に向上。ESG報告書でも好事例として取り上げられています。
-                    </p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-
-                <div class="testimonial-card bg-white p-6 shadow-custom rounded-lg fade-in" style="animation-delay: 0.6s;">
-                    <div class="flex items-center mb-6">
-                        <img src="https://placehold.co/64x64/66A182/ffffff?text=User+3" alt="顧客写真" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold text-gray-800">T.S 様</h4>
-                            <p class="text-sm text-gray-600">C株式会社<br>EC統括責任者</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        サステナビリティを重視する当社のブランド価値と完全に一致するサービスです。技術的な統合も驚くほど簡単で、2週間で立ち上げることができました。顧客からのフィードバックも非常に好評です。
-                    </p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">よくある質問</h2>
-                <p class="text-lg text-gray-600">
-                    doopの下取りサービス導入に関するよくある質問にお答えします。
-                </p>
-            </div>
-
-            <div class="max-w-3xl mx-auto">
-                <div class="faq-item py-4 active">
-                    <div class="faq-question flex justify-between items-center">
-                        <h3 class="text-xl font-medium text-primary-light">導入にはどれくらいの期間がかかりますか？</h3>
-                        <i class="fas fa-chevron-down text-primary-lighter"></i>
-                    </div>
-                    <div class="faq-answer pt-4" style="max-height: 200px;">
-                        <p class="text-gray-600">
-                            Shopifyやその他の主要ECプラットフォームをご利用の場合、最短2週間で導入可能です。カスタム開発が必要な場合でも、通常4〜6週間程度で導入できます。導入プロセスは当社の専任エンジニアがサポートするため、貴社側の技術リソースへの負担は最小限です。
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item py-4">
-                    <div class="faq-question flex justify-between items-center">
-                        <h3 class="text-xl font-medium text-primary-light">どのような商品が下取り対象になりますか？</h3>
-                        <i class="fas fa-chevron-down text-primary-lighter"></i>
-                    </div>
-                    <div class="faq-answer pt-4">
-                        <p class="text-gray-600">
-                            アパレル、小型家電、スポーツ用品、バッグ・財布などの小型雑貨が主な対象です。大型家具や冷蔵庫・洗濯機などの大型家電は、物流の関係から現在対象外となっています。対象商品のカスタマイズも可能ですので、ご相談ください。
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item py-4">
-                    <div class="faq-question flex justify-between items-center">
-                        <h3 class="text-xl font-medium text-primary-light">査定基準や金額はどのように決まりますか？</h3>
-                        <i class="fas fa-chevron-down text-primary-lighter"></i>
-                    </div>
-                    <div class="faq-answer pt-4">
-                        <p class="text-gray-600">
-                            商品カテゴリ、ブランド、経過年数、状態などを総合的に判断し、市場価値に基づいて査定します。査定基準は貴社と協議の上でカスタマイズすることも可能です。また、戦略的な商品については査定金額を優遇するなど、マーケティング施策と連動した柔軟な設定が可能です。
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item py-4">
-                    <div class="faq-question flex justify-between items-center">
-                        <h3 class="text-xl font-medium text-primary-light">顧客への還元方法は選べますか？</h3>
-                        <i class="fas fa-chevron-down text-primary-lighter"></i>
-                    </div>
-                    <div class="faq-answer pt-4">
-                        <p class="text-gray-600">
-                            はい、以下の還元方法から選択いただけます：<br>
-                            1. 自社ECサイトで使えるポイント/クーポン<br>
-                            2. 現金振込<br>
-                            3. デジタルギフト券<br>
-                            ポイント還元の場合、還元率を高く設定することで再購入を効果的に促進できます。還元方法は貴社の戦略に合わせてカスタマイズ可能です。
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item py-4">
-                    <div class="faq-question flex justify-between items-center">
-                        <h3 class="text-xl font-medium text-primary-light">下取りした商品はどうなりますか？</h3>
-                        <i class="fas fa-chevron-down text-primary-lighter"></i>
-                    </div>
-                    <div class="faq-answer pt-4">
-                        <p class="text-gray-600">
-                            商品の状態に応じて、以下のように適切に処理されます：<br>
-                            1. 良品：リユースマーケットでの再販<br>
-                            2. 一部破損品：修理/リメイク後の再販<br>
-                            3. 再販不可品：素材リサイクルまたはアップサイクル<br>
-                            すべてのプロセスはサステナビリティを考慮した形で行われ、廃棄物の最小化を目指しています。これにより、貴社のESG指標改善にも貢献します。
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item py-4">
-                    <div class="faq-question flex justify-between items-center">
-                        <h3 class="text-xl font-medium text-primary-light">導入に必要な自社の体制はどのようなものですか？</h3>
-                        <i class="fas fa-chevron-down text-primary-lighter"></i>
-                    </div>
-                    <div class="faq-answer pt-4">
-                        <p class="text-gray-600">
-                            基本的な導入と運用は当社が対応するため、貴社側の負担は最小限です。導入時にはECサイト担当者とマーケティング担当者のご参加をお願いしています。また、API連携やカスタム開発が必要な場合は、一時的にエンジニアのサポートが必要になることがあります。日常の運用については、当社が全面的にサポートします。
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="#contact" class="btn-primary px-8 py-3 rounded-lg inline-block font-medium">
-                    その他のご質問はこちら
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-16 md:py-24 bg-primary text-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">下取りサービスで持続可能な成長を実現しませんか？</h2>
-                <p class="text-lg opacity-90 mb-12 max-w-3xl mx-auto">
-                    doopは、貴社のECサイトの成長戦略と環境への取り組みを同時に実現します。<br>
-                    無料相談から始めてみませんか？
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#contact" class="btn-primary bg-white text-primary px-10 py-4 rounded-lg font-medium text-lg hover:bg-opacity-90">
-                        無料相談を予約する
-                    </a>
-                    <a href="#pricing" class="px-10 py-4 rounded-lg font-medium text-lg border-2 border-white hover:bg-white hover:bg-opacity-10">
-                        料金プランを見る
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 md:pr-12 mb-12 md:mb-0">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">お問い合わせ</h2>
-                    <p class="text-lg text-gray-600 mb-8">
-                        doopの下取りサービス導入に関するご質問、お見積り依頼、資料請求など、お気軽にお問い合わせください。
-                    </p>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-phone text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800 mb-1">お電話でのお問い合わせ</h4>
-                                <p class="text-gray-600">平日 10:00〜18:00</p>
-                                <p class="text-xl font-bold text-primary mt-1">03-1234-5678</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-envelope text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800 mb-1">メールでのお問い合わせ</h4>
-                                <p class="text-gray-600">24時間受付、通常翌営業日中にご返答</p>
-                                <p class="text-xl font-bold text-primary mt-1">info@doop-service.com</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-file-alt text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800 mb-1">資料ダウンロード</h4>
-                                <p class="text-gray-600">サービス詳細資料、成功事例集、ROI計算ツールなど</p>
-                                <a href="#" class="text-primary-lighter font-medium flex items-center mt-1 hover:underline">
-                                    <span>資料一覧を見る</span>
-                                    <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="md:w-1/2">
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h3 class="text-2xl font-bold text-primary mb-6">お問い合わせフォーム</h3>
-                        <form>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                                <div>
-                                    <label class="block text-gray-700 mb-2" for="name">お名前 <span class="text-red-500">*</span></label>
-                                    <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-lighter" placeholder="山田 太郎" required>
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 mb-2" for="company">会社名 <span class="text-red-500">*</span></label>
-                                    <input type="text" id="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-lighter" placeholder="株式会社サンプル" required>
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 mb-2" for="email">メールアドレス <span class="text-red-500">*</span></label>
-                                    <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-lighter" placeholder="example@company.com" required>
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 mb-2" for="phone">電話番号</label>
-                                    <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-lighter" placeholder="03-1234-5678">
-                                </div>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="block text-gray-700 mb-2">お問い合わせ内容 <span class="text-red-500">*</span></label>
-                                <div class="flex flex-wrap gap-4">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="inquiry-type" class="mr-2" checked>
-                                        <span>サービス詳細の相談</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="inquiry-type" class="mr-2">
-                                        <span>お見積り依頼</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="inquiry-type" class="mr-2">
-                                        <span>資料請求</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="inquiry-type" class="mr-2">
-                                        <span>その他</span>
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="block text-gray-700 mb-2" for="message">メッセージ</label>
-                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-lighter" placeholder="ご質問や詳細な要件などをご記入ください"></textarea>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="flex items-start">
-                                    <input type="checkbox" class="mt-1 mr-2" required>
-                                    <span class="text-sm text-gray-600">
-                                        <a href="#" class="text-primary-lighter hover:underline">プライバシーポリシー</a>に同意します <span class="text-red-500">*</span>
-                                    </span>
-                                </label>
-                            </div>
-                            
-                            <button type="submit" class="btn-primary w-full px-6 py-3 rounded-lg font-medium text-lg">
-                                送信する
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="text-2xl font-bold mb-4">doop</div>
-                    <p class="text-gray-400 mb-4">
-                        アパレル・家電ブランド向けの下取りサービス。サステナビリティと売上向上を同時に実現します。
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-white hover:text-primary-lighter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white hover:text-primary-lighter"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white hover:text-primary-lighter"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-white hover:text-primary-lighter"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">サービス</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">下取りサービス</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Shopifyアプリ</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">API連携</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">カスタマイズ開発</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">サステナビリティレポート</a></li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>ワンクリックインストール</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>オーダー履歴と自動連携</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>顧客データとの連携</span>
+                        </li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">会社情報</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">会社概要</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">ミッション</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">沿革</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">採用情報</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">プレスリリース</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">サポート</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">お問い合わせ</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">よくある質問</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">資料ダウンロード</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">プライバシーポリシー</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">利用規約</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2025 doop Inc. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                faqItem.classList.toggle('active');
                 
-                // Close other FAQs
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    if (item !== faqItem) {
-                        item.classList.remove('active');
-                    }
-                });
-            });
-        });
-        
-        // Fade-in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeInOnScroll = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementBottom = element.getBoundingClientRect().bottom;
-                const isVisible = elementTop < window.innerHeight - 100 && elementBottom > 0;
+                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                    <div class="bg-doop-accent w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-doop-primary" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-doop-primary mb-3">専任サポート体制</h3>
+                    <p class="text-gray-600 mb-6">
+                        導入から運用まで、専任担当者が徹底サポート。技術的な知識がなくても安心して導入いただけます。
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>導入サポート</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>運用コンサルティング</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>改善提案サービス</span>
+                        </li>
+                    </ul>
+                </div>
                 
-                if (isVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        };
-        
-        // Initial check
-        fadeInOnScroll();
-        
-        // Listen for scroll
-        window.addEventListener('scroll', fadeInOnScroll);
-        
-        // Animate chart bars on load
-        window.addEventListener('load', () => {
-            const chartColumns = document.querySelectorAll('.chart-column');
-            chartColumns.forEach(column => {
-                const height = column.style.height;
-                column.style.height = '0';
-                setTimeout(() => {
-                    column.style.height = height;
-                }, 300);
-            });
-        });
-    </script>
+                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                    <div class="bg-doop-accent w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-doop-primary" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-doop-primary mb-3">カスタマイズ柔軟性</h3>
+                    <p class="text-gray-600 mb-6">
+                        お客様のビジネスモデルや商品カテゴリに合わせた柔軟なカスタマイズが可能。独自の下取りプログラムを構築できます。
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>商品カテゴリ別設定</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>独自査定基準の設定</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>ブランドに合わせたデザイン</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="case" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-doop-primary mb-4">導入事例</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    下取りサービス導入で成果を上げている企業の事例をご紹介します
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-doop-primary h-12 w-12 rounded-md flex items-center justify-center text-white font-bold text-xl mr-4">
+                                E株
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-doop-primary">E株式会社</h3>
+                                <p class="text-gray-600">アパレル / サステナビリティブランド</p>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-bold text-doop-primary mb-2">導入背景</h4>
+                            <p class="text-gray-600">
+                                サステナブルなアパレル製品を提供しているE株式会社は、ブランド価値をさらに高めるため、古着の回収・再利用の仕組みを模索していました。doopの下取りサービスを導入し、循環型ビジネスモデルを構築しました。
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="bg-doop-accent rounded-lg p-4 text-center">
+                                <span class="block text-2xl font-bold text-doop-primary">24%</span>
+                                <span class="text-sm text-gray-600">売上向上</span>
+                            </div>
+                            <div class="bg-doop-accent rounded-lg p-4 text-center">
+                                <span class="block text-2xl font-bold text-doop-primary">38%</span>
+                                <span class="text-sm text-gray-600">リピート率向上</span>
+                            </div>
+                            <div class="bg-doop-accent rounded-lg p-4 text-center">
+                                <span class="block text-2xl font-bold text-doop-primary">3.2倍</span>
+                                <span class="text-sm text-gray-600">投資対効果</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-doop-primary mb-2">導入効果</h4>
+                            <p class="text-gray-600">
+                                「下取りサービス導入後、顧客のリピート率が大幅に向上し、売上も24%増加しました。特に環境意識の高い20〜30代の顧客からの支持が高まり、新規顧客獲得にも貢献しています。」<br>
+                                <span class="italic mt-2 block">— ECマーケティング責任者 T.K様</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-doop-primary h-12 w-12 rounded-md flex items-center justify-center text-white font-bold text-xl mr-4">
+                                T株
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-doop-primary">T株式会社</h3>
+                                <p class="text-gray-600">家電 / ガジェット専門店</p>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-bold text-doop-primary mb-2">導入背景</h4>
+                            <p class="text-gray-600">
+                                スマートフォンやPC、オーディオ機器などを扱うT株式会社は、新製品販売時に古い製品の下取りニーズが高いことに着目。doopの下取りサービスを導入し、顧客の買い替えサイクル短縮を図りました。
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="bg-doop-accent rounded-lg p-4 text-center">
+                                <span class="block text-2xl font-bold text-doop-primary">32%</span>
+                                <span class="text-sm text-gray-600">売上向上</span>
+                            </div>
+                            <div class="bg-doop-accent rounded-lg p-4 text-center">
+                                <span class="block text-2xl font-bold text-doop-primary">41%</span>
+                                <span class="text-sm text-gray-600">リピート率向上</span>
+                            </div>
+                            <div class="bg-doop-accent rounded-lg p-4 text-center">
+                                <span class="block text-2xl font-bold text-doop-primary">2.8倍</span>
+                                <span class="text-sm text-gray-600">投資対効果</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-doop-primary mb-2">導入効果</h4>
+                            <p class="text-gray-600">
+                                「新製品購入時の障壁となっていた"古い製品の処分問題"を解決することで、顧客の買い替えサイクルが短縮。平均購入単価も向上し、全体売上が大幅に増加しました。」<br>
+                                <span class="italic mt-2 block">— EC事業責任者 M.S様</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-doop-primary mb-4">導入企業の声</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    doopの下取りサービスを実際に導入いただいた企業様からの声をご紹介します
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="initial-icon mr-4">
+                            K.T
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-doop-primary">K.T様</h4>
+                            <p class="text-sm text-gray-600">スポーツアパレル企業 マーケティング部長</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        「当初は導入に不安もありましたが、専任チームのサポートのおかげで短期間でスムーズに立ち上げることができました。下取りサービスにより、顧客エンゲージメントが大幅に向上し、リピート率が1.5倍に増加しました。」
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="initial-icon mr-4">
+                            S.M
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-doop-primary">S.M様</h4>
+                            <p class="text-sm text-gray-600">家電メーカー EC事業部長</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        「下取りサービスの導入により、顧客の購買障壁を下げることができました。特に高額商品の買い替え需要が喚起され、平均購入単価が25%向上しました。また、下取り品の再販による新たな収益源も確立できました。」
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="initial-icon mr-4">
+                            Y.K
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-doop-primary">Y.K様</h4>
+                            <p class="text-sm text-gray-600">アウトドア用品メーカー 代表取締役</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        「サステナビリティへの取り組みとして下取りサービスを導入しましたが、想像以上のビジネス効果がありました。顧客からの評価も高く、ブランドイメージの向上にも大きく貢献しています。doopのような専門家のサポートがあったからこそ成功できました。」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
