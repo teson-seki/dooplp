@@ -6,198 +6,262 @@
     <title>doop下取りサービス | ECサイトの売上向上とリピート率改善を実現</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <style>
+        :root {
+            --doop-primary: #2F4F4F;
+            --doop-secondary: #66A182;
+            --doop-accent: #E8F4EA;
+            --doop-text: #333333;
+            --doop-light-text: #666666;
+            --doop-white: #FFFFFF;
+            --doop-light-gray: #F5F5F5;
+            --doop-border: #EEEEEE;
+        }
+        
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            color: #333333;
+            color: var(--doop-text);
+            line-height: 1.6;
         }
         
-        .bg-doop-primary {
-            background-color: #2F4F4F;
+        .hero-section {
+            background: linear-gradient(135deg, var(--doop-primary) 0%, #1A3636 100%);
+            min-height: 500px;
+            display: flex;
+            align-items: center;
         }
         
-        .bg-doop-secondary {
-            background-color: #66A182;
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
         }
         
-        .bg-doop-accent {
-            background-color: #E8F4EA;
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--doop-secondary);
         }
         
-        .text-doop-primary {
-            color: #2F4F4F;
+        .card {
+            transition: all 0.3s ease;
         }
         
-        .text-doop-secondary {
-            color: #66A182;
-        }
-        
-        .border-doop-primary {
-            border-color: #2F4F4F;
-        }
-        
-        .border-doop-secondary {
-            border-color: #66A182;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
         .btn-primary {
-            background-color: #66A182;
+            background-color: var(--doop-secondary);
             color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
-            background-color: #548369;
+            background-color: #558C6E;
+            transform: translateY(-2px);
         }
         
-        .btn-secondary {
+        .btn-outline {
             background-color: transparent;
-            border: 2px solid #66A182;
-            color: #66A182;
+            color: white;
+            border: 2px solid white;
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
         
-        .btn-secondary:hover {
-            background-color: rgba(102, 161, 130, 0.1);
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         
-        .hero-gradient {
-            background: linear-gradient(135deg, #2F4F4F 0%, #1A3636 100%);
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--doop-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .feature-card {
-            transition: all 0.3s ease;
+        .feature-icon i {
+            font-size: 2rem;
+            color: var(--doop-primary);
         }
         
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--doop-secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .step-card {
-            transition: all 0.3s ease;
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--doop-secondary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
         
-        .step-card:hover {
-            transform: translateY(-5px);
+        .testimonial {
+            background-color: var(--doop-light-gray);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--doop-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-right: 1rem;
         }
         
         .faq-item {
-            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--doop-border);
+            margin-bottom: 1rem;
         }
         
-        .initial-icon {
-            background-color: #66A182;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+            padding: 1rem 0;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            font-weight: bold;
-            font-size: 1.5rem;
         }
         
-        /* Animation */
-        .fade-in {
-            animation: fadeIn 0.8s ease-in-out forwards;
+        .faq-answer {
+            padding-bottom: 1rem;
+            display: none;
         }
         
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        .faq-question.active + .faq-answer {
+            display: block;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        footer {
+            background-color: var(--doop-primary);
+            color: white;
+        }
+        
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .stat-value {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body class="bg-white">
     <!-- Header -->
-    <header class="bg-white py-4 shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center py-4">
             <div class="flex items-center">
                 <div class="text-2xl font-bold text-doop-primary">doop</div>
             </div>
-            <nav class="hidden md:flex items-center">
-                <a href="#features" class="mx-3 text-gray-700 hover:text-doop-secondary">メリット</a>
-                <a href="#howto" class="mx-3 text-gray-700 hover:text-doop-secondary">導入ステップ</a>
-                <a href="#case" class="mx-3 text-gray-700 hover:text-doop-secondary">導入事例</a>
-                <a href="#faq" class="mx-3 text-gray-700 hover:text-doop-secondary">よくある質問</a>
-                <a href="#contact" class="mx-3 px-5 py-2 bg-doop-secondary text-white rounded-md hover:bg-opacity-90">お問い合わせ</a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#why" class="text-gray-600 hover:text-doop-secondary">なぜ下取り施策が必要か</a>
+                <a href="#challenges" class="text-gray-600 hover:text-doop-secondary">導入時の課題</a>
+                <a href="#solution" class="text-gray-600 hover:text-doop-secondary">doopの解決策</a>
+                <a href="#contact" class="text-gray-600 hover:text-doop-secondary">お問い合わせ</a>
             </nav>
             <div class="md:hidden">
                 <button class="text-gray-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
+                    <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-gradient py-20 md:py-32">
-        <div class="container mx-auto px-6 md:px-12">
-            <div class="max-w-3xl mx-auto text-center text-white">
-                <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">ECサイトの売上向上とリピート率改善を実現する下取りサービス</h1>
-                <p class="text-lg md:text-xl opacity-90 mb-10">顧客ロイヤルティを高め、リピート率35%改善、売上20%アップを実現するdoop</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#contact" class="btn-primary px-8 py-3 rounded-md font-medium">資料ダウンロード</a>
-                    <a href="#contact" class="btn-secondary px-8 py-3 rounded-md font-medium">デモ依頼</a>
+    <section class="hero-section">
+        <div class="container mx-auto px-6 md:px-12 py-16 md:py-24">
+            <div class="text-center text-white">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">売上とリピート率を劇的に改善する</h1>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">下取りサービス『doop』</h1>
+                <p class="text-xl md:text-2xl mb-10 opacity-90">顧客ロイヤルティを高め、購入CVR売上10%アップ、リピート率20%改善を実現</p>
+                <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+                    <a href="#contact" class="btn-primary">資料ダウンロード</a>
+                    <a href="#contact" class="btn-outline">デモ依頼</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Business Problems Section -->
-    <section class="py-16 md:py-24 bg-gray-50">
+    <section id="why" class="py-16 md:py-24 bg-gray-50">
         <div class="container mx-auto px-6 md:px-12">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-doop-primary mb-4">ECサイト運営の課題を解決</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">doopの下取りサービス連携で、ECサイト運営の3つの課題を解決します</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
-                    <div class="bg-doop-accent w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-doop-primary" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                        </svg>
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-doop-primary">なぜ下取り施策が必要か</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-doop-primary mb-3">顧客獲得コストの高騰</h3>
-                    <p class="text-gray-600">
-                        広告費の上昇や競争激化により、新規顧客獲得コストが年々増加。投資対効果が悪化しています。
-                    </p>
+                    <h3 class="text-xl font-bold text-doop-primary mb-4 text-center">売上低迷</h3>
+                    <p class="text-gray-600">新規顧客の獲得コストが高騰し、既存顧客のリピート率が低いため、売上が伸び悩んでいます。</p>
                 </div>
-                
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
-                    <div class="bg-doop-accent w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-doop-primary" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
-                        </svg>
+                <div class="card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-doop-primary mb-3">リピート率の低下</h3>
-                    <p class="text-gray-600">
-                        顧客の購買サイクルが長く、一度の購入で離脱するケースが増加。リピート率が年々低下しています。
-                    </p>
+                    <h3 class="text-xl font-bold text-doop-primary mb-4 text-center">顧客離れ</h3>
+                    <p class="text-gray-600">競合他社との差別化が難しく、顧客のロイヤルティが低い状態が続いています。</p>
                 </div>
-                
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
-                    <div class="bg-doop-accent w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-doop-primary" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
-                        </svg>
+                <div class="card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="feature-icon">
+                        <i class="fas fa-recycle"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-doop-primary mb-3">在庫処分の課題</h3>
-                    <p class="text-gray-600">
-                        過剰在庫や返品在庫の処分に関するコストと環境負荷が増大。効率的な循環の仕組みが求められています。
-                    </p>
+                    <h3 class="text-xl font-bold text-doop-primary mb-4 text-center">環境問題</h3>
+                    <p class="text-gray-600">使用済み商品の適切な処理が課題となり、環境への配慮が求められています。</p>
                 </div>
             </div>
         </div>
@@ -206,79 +270,49 @@
     <!-- Features Section -->
     <section id="features" class="py-16 md:py-24">
         <div class="container mx-auto px-6 md:px-12">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-doop-primary mb-4">doop導入のビジネスメリット</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    ECサイトへの下取りサービス導入で、売上とリピート率を同時に向上します
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card border-t-4 border-doop-secondary">
-                    <div class="mb-6">
-                        <h3 class="text-xl font-bold text-doop-primary mb-3">売上向上</h3>
-                        <div class="flex items-center mb-3">
-                            <span class="text-3xl font-bold text-doop-secondary mr-2">20%</span>
-                            <span class="text-gray-600">平均売上アップ</span>
-                        </div>
-                        <p class="text-gray-600 mb-6">
-                            下取り利用ユーザーは非利用者と比較して平均購入単価が上昇。
-                            また、ポイント還元によって再購入を促進することで全体売上が向上します。
-                        </p>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>平均購入単価の上昇</span>
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>購入頻度の増加</span>
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>商品ラインナップ拡充の機会</span>
-                            </li>
-                        </ul>
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-doop-primary">doopの特徴</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div class="card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-doop-primary mb-4">売上向上</h3>
+                    <p class="text-gray-600 mb-4">下取りサービスを導入することで、平均購入金額が20%向上し、リピート率が35%改善します。</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-doop-accent mr-2"></i>
+                            <span>新規顧客の獲得コスト削減</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-doop-accent mr-2"></i>
+                            <span>既存顧客のリピート率向上</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-doop-accent mr-2"></i>
+                            <span>平均購入金額の増加</span>
+                        </li>
+                    </ul>
                 </div>
-                
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card border-t-4 border-doop-secondary">
-                    <div class="mb-6">
-                        <h3 class="text-xl font-bold text-doop-primary mb-3">リピート率改善</h3>
-                        <div class="flex items-center mb-3">
-                            <span class="text-3xl font-bold text-doop-secondary mr-2">35%</span>
-                            <span class="text-gray-600">リピート率向上</span>
-                        </div>
-                        <p class="text-gray-600 mb-6">
-                            下取りサービスを利用した顧客は、ブランドへのロイヤルティが高まり、リピート率が大幅に改善します。ポイント還元によるリピート促進効果も高いです。
-                        </p>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>顧客ロイヤルティの向上</span>
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>購買サイクルの短縮化</span>
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-doop-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>競合他社への流出防止</span>
-                            </li>
-                        </ul>
+                <div class="card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-doop-primary mb-4">簡単導入</h3>
+                    <p class="text-gray-600 mb-4">Shopifyとの完全連携により、最短1日で導入可能。専任サポートが導入から運用までをサポートします。</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-doop-accent mr-2"></i>
+                            <span>Shopifyとの完全連携</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-doop-accent mr-2"></i>
+                            <span>専任サポート体制</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-doop-accent mr-2"></i>
+                            <span>カスタマイズ可能な設定</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
