@@ -5,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>doop下取りサービス - EC運営企業向け</title>
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LGE1WV5QJQ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
+        gtag('config', 'G-LGE1WV5QJQ', {
+            'send_page_view': true,
+            'anonymize_ip': true,
+            'allow_google_signals': true,
+            'allow_ad_personalization_signals': true
+        });
+
+        // フォーム送信完了のイベントトラッキング
+        document.addEventListener('DOMContentLoaded', function() {
+            const formrunEmbed = document.querySelector('.formrun-embed');
+            if (formrunEmbed) {
+                formrunEmbed.addEventListener('formrun:success', function() {
+                    gtag('event', 'form_submission', {
+                        'event_category': 'Contact',
+                        'event_label': 'Contact Form Submission',
+                        'value': 1
+                    });
+                });
+            }
+        });
     </script>
     <!-- End Google Analytics -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
