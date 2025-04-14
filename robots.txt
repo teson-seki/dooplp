@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://d00p.jp/sitemap.xml 
