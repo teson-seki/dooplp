@@ -4,207 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>doop下取りサービス - EC運営企業向け</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <meta name="description" content="ECサイトに「タグ1行」で下取り機能を実装。運営負担ゼロで購入CVR10%アップ、リピート率20%改善を実現するSaaS型リユースサービス。">
+    <meta property="og:title" content="doop下取りサービス - EC運営企業向け">
+    <meta property="og:description" content="ECサイトに「タグ1行」で下取り機能を実装。運営負担ゼロで購入CVR10%アップ、リピート率20%改善。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://d00p.jp/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"></noscript>
     <style>
-        :root {
-            --doop-primary: #2F4F4F;
-            --doop-secondary: #66A182;
-            --doop-accent: #E8F4EA;
-            --doop-text: #333333;
-            --doop-light-text: #666666;
-            --doop-white: #FFFFFF;
-            --doop-light-gray: #F5F5F5;
-            --doop-border: #EEEEEE;
-        }
-        
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: var(--doop-text);
-            line-height: 1.6;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.3;
-        }
-        
-        .hero-section {
-            background: linear-gradient(135deg, var(--doop-primary) 0%, #1A3636 100%);
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .section-title {
-            position: relative;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--doop-secondary);
-        }
-        
-        .card {
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-primary {
-            background-color: var(--doop-secondary);
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #558C6E;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 0.75rem 2rem;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background-color: var(--doop-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .feature-icon i {
-            font-size: 2rem;
-            color: var(--doop-primary);
-        }
-        
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background-color: var(--doop-secondary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .stat-value {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--doop-secondary);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-        
-        .testimonial {
-            background-color: var(--doop-light-gray);
-            border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .testimonial-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--doop-primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-        
-        .faq-item {
-            border-bottom: 1px solid var(--doop-border);
-            margin-bottom: 1rem;
-        }
-        
-        .faq-question {
-            font-weight: 600;
-            cursor: pointer;
-            padding: 1rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-answer {
-            padding-bottom: 1rem;
-            display: none;
-        }
-        
-        .faq-question.active + .faq-answer {
-            display: block;
-        }
-        
-        .faq-question i {
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-question.active i {
-            transform: rotate(180deg);
-        }
-        
-        footer {
-            background-color: var(--doop-primary);
-            color: white;
-        }
-        
-        footer a {
-            color: rgba(255, 255, 255, 0.8);
-            transition: color 0.3s ease;
-        }
-        
-        footer a:hover {
-            color: white;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .stat-value {
-                font-size: 2.5rem;
-            }
-        }
+/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/
+*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}small{font-size:80%}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset,legend{padding:0}fieldset{margin:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}img,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}
+.container{width:100%}@media(min-width:640px){.container{max-width:640px}}@media(min-width:768px){.container{max-width:768px}}@media(min-width:1024px){.container{max-width:1024px}}@media(min-width:1280px){.container{max-width:1280px}}@media(min-width:1536px){.container{max-width:1536px}}
+.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:.25rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:.5rem}.mr-2{margin-right:.5rem}.mr-4{margin-right:1rem}.mt-12{margin-top:3rem}.mt-2{margin-top:.5rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-16{height:4rem}.h-5{height:1.25rem}.w-16{width:4rem}.w-5{width:1.25rem}.w-full{width:100%}.max-w-3xl{max-width:48rem}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-4{gap:1rem}.gap-8{gap:2rem}.space-x-6>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem*var(--tw-space-x-reverse));margin-left:calc(1.5rem*(1 - var(--tw-space-x-reverse)))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.border{border-width:1px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-gray-200{border-color:#e5e7eb}.border-gray-800{border-color:#1f2937}.bg-gray-200{background-color:#e5e7eb}.bg-gray-50{background-color:#f9fafb}.bg-white{background-color:#fff}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pl-4{padding-left:1rem}.pt-4{padding-top:1rem}.pt-8{padding-top:2rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.italic{font-style:italic}.text-gray-300{color:#d1d5db}.text-gray-400{color:#9ca3af}.text-gray-500{color:#6b7280}.text-gray-600{color:#4b5563}.text-gray-700{color:#374151}.text-gray-800{color:#1f2937}.text-green-600{color:#16a34a}.text-red-500{color:#ef4444}.text-white{color:#fff}.opacity-90{opacity:.9}.shadow-sm{box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}.hover\:text-gray-900:hover{color:#111827}.hover\:text-white:hover{color:#fff}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),0 0 0 2px var(--tw-ring-color,rgba(59,130,246,.5)),var(--tw-shadow,0 0 #0000)}.focus\:ring-green-600:focus{--tw-ring-color:#16a34a}@media(min-width:768px){.md\:block{display:block}.md\:hidden{display:none}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:flex-row{flex-direction:row}.md\:space-x-4>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem*var(--tw-space-x-reverse));margin-left:calc(1rem*(1 - var(--tw-space-x-reverse)))}.md\:space-y-0>:not([hidden])~:not([hidden]){margin-top:0;margin-bottom:0}.md\:py-24{padding-top:6rem;padding-bottom:6rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}}@media(min-width:1024px){.lg\:text-5xl{font-size:3rem;line-height:1}}
+
+/* Custom styles */
+:root{--doop-primary:#2F4F4F;--doop-secondary:#66A182;--doop-accent:#E8F4EA;--doop-text:#333;--doop-light-text:#666;--doop-white:#FFF;--doop-light-gray:#F5F5F5;--doop-border:#EEE}
+body{font-family:'Noto Sans JP',ui-sans-serif,system-ui,sans-serif;color:var(--doop-text);line-height:1.6}
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.3}
+.hero-section{background:linear-gradient(135deg,var(--doop-primary) 0%,#1A3636 100%);min-height:500px;display:flex;align-items:center}
+.section-title{position:relative;margin-bottom:3rem;text-align:center}
+.section-title:after{content:'';position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);width:60px;height:3px;background-color:var(--doop-secondary)}
+.card{transition:all .3s ease}.card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.btn-primary{background-color:var(--doop-secondary);color:#fff;padding:.75rem 2rem;border-radius:5px;font-weight:600;transition:all .3s ease;display:inline-block}
+.btn-primary:hover{background-color:#558C6E;transform:translateY(-2px)}
+.btn-outline{background-color:transparent;color:#fff;border:2px solid #fff;padding:.75rem 2rem;border-radius:5px;font-weight:600;transition:all .3s ease;display:inline-block}
+.btn-outline:hover{background-color:rgba(255,255,255,.1);transform:translateY(-2px)}
+.feature-icon{width:70px;height:70px;background-color:var(--doop-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+.feature-icon svg{width:2rem;height:2rem;color:var(--doop-primary);fill:currentColor}
+.step-number{width:40px;height:40px;background-color:var(--doop-secondary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 1rem}
+.stat-value{font-size:3rem;font-weight:700;color:var(--doop-secondary);line-height:1;margin-bottom:.5rem}
+.testimonial{background-color:var(--doop-light-gray);border-radius:10px;padding:2rem;margin-bottom:2rem}
+.testimonial-icon{width:60px;height:60px;background-color:var(--doop-primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.5rem;margin-right:1rem;flex-shrink:0}
+.faq-item{border-bottom:1px solid var(--doop-border);margin-bottom:1rem}
+.faq-question{font-weight:600;cursor:pointer;padding:1rem 0;display:flex;justify-content:space-between;align-items:center}
+.faq-answer{padding-bottom:1rem;display:none}
+.faq-question.active+.faq-answer{display:block}
+.faq-question svg{transition:transform .3s ease;width:1rem;height:1rem;flex-shrink:0}
+.faq-question.active svg{transform:rotate(180deg)}
+footer{background-color:var(--doop-primary);color:#fff}
+footer a{color:rgba(255,255,255,.8);transition:color .3s ease}
+footer a:hover{color:#fff}
+.icon-check{width:1rem;height:1rem;display:inline-block;vertical-align:middle;margin-right:.5rem;color:#16a34a;fill:currentColor}
+@media(max-width:768px){.stat-value{font-size:2.5rem}}
     </style>
 </head>
 <body>
@@ -223,8 +66,8 @@
                 </ul>
             </nav>
             <div class="md:hidden">
-                <button class="text-gray-500 focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
+                <button class="text-gray-500 focus:outline-none" aria-label="メニュー">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
                 </button>
             </div>
         </div>
@@ -252,27 +95,27 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center">なぜ今、下取り施策が必要なのか？</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto text-center mt-4">ECサイト運営において直面している3つの重要課題</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <div class="card bg-gray-50 rounded-lg p-6 shadow-sm text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <svg viewBox="0 0 512 512"><path d="M64 64c0-17.7 14.3-32 32-32h320c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-17.7 0-32-14.3-32-32zm0 128c0-17.7 14.3-32 32-32h320c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-17.7 0-32-14.3-32-32zM96 352h107.4l-29.1-29.1c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l80 80c12.5 12.5 12.5 32.8 0 45.3l-80 80c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L203.3 408H96c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-4">新規顧客獲得コストの急激な増加</h3>
                     <p class="text-gray-600">広告費の高騰により、新規顧客の獲得コストが年々上昇。CPA（顧客獲得単価）が利益を圧迫しています。</p>
                 </div>
-                
+
                 <div class="card bg-gray-50 rounded-lg p-6 shadow-sm text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-user-clock"></i>
+                        <svg viewBox="0 0 640 512"><path d="M352 128c0 70.7-57.3 128-128 128S96 198.7 96 128 153.3 0 224 0s128 57.3 128 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4c98.5 0 178.3 79.8 178.3 178.3 0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248h-64c-13.3 0-24-10.7-24-24s10.7-24 24-24h64v-64c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24h-64v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-4">リピート率の低下による利益率悪化</h3>
                     <p class="text-gray-600">一度の購入で離脱する顧客が増加し、顧客生涯価値（LTV）が低下。収益性に大きな影響を与えています。</p>
                 </div>
-                
+
                 <div class="card bg-gray-50 rounded-lg p-6 shadow-sm text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-box-open"></i>
+                        <svg viewBox="0 0 640 512"><path d="M58.9 42.1c3-6.1 9.6-9.6 16.3-8.7L320 64l244.8-30.6c6.7-.8 13.3 2.7 16.3 8.7l41.7 83.4c9 17.9-.6 39.6-19.8 45.1L320 240 37.2 170.6c-19.3-5.5-28.8-27.2-19.8-45.1L58.9 42.1zM321.1 280l255.2-72.9c5.3-1.5 10.6 2.1 10.6 7.5v209.2c0 5-3.5 9.2-8.3 10.2L321.1 488V280zm-322.7-65.4L253.6 287.5c4.9 1.4 8.3 5.8 8.3 10.9v188.8l-256.5-54.5C2.1 431.7-1.4 428.5 .4 425.1L.4 425.1-1.6 214.6z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-4">在庫過多・返品率増加による収益性低下</h3>
                     <p class="text-gray-600">過剰在庫の処分コストや返品処理の負担が増加し、利益率を圧迫。サステナビリティ面での課題も生じています。</p>
@@ -288,27 +131,27 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center">下取り施策をブランドが導入する際の課題</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto text-center mt-4">多くのEC運営企業が下取り施策導入時に直面する障壁</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <div class="card bg-white rounded-lg p-6 shadow-sm text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-code"></i>
+                        <svg viewBox="0 0 640 512"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-4">システム連携の難易度</h3>
                     <p class="text-gray-600">ECサイトとの連携に技術的な障壁があり、自社リソースでの対応が困難。開発コストと期間も大きな負担となります。</p>
                 </div>
-                
+
                 <div class="card bg-white rounded-lg p-6 shadow-sm text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-tasks"></i>
+                        <svg viewBox="0 0 512 512"><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l17.1 17.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l17.1 17.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32h224c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32h224c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm-64 160c0-17.7 14.3-32 32-32h288c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-4">複雑なオペレーション</h3>
                     <p class="text-gray-600">査定・物流の運用負荷が高く、専門知識も必要。顧客対応から在庫管理まで、多岐にわたる業務が発生します。</p>
                 </div>
-                
+
                 <div class="card bg-white rounded-lg p-6 shadow-sm text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
+                        <svg viewBox="0 0 512 512"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0-64 0 32 32 0 1 0 64 0z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-4">在庫リスクの懸念</h3>
                     <p class="text-gray-600">自社で中古在庫を持つリスクを抱えられない。適切な再販ルートがなければ、経営リスクに直結します。</p>
@@ -324,27 +167,27 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center">doopが課題をどう解決するか</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto text-center mt-4">シンプルかつ効果的なソリューションで、下取り施策を誰でも実現可能に</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <div class="card bg-gray-50 rounded-lg p-6 shadow-sm text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-plug"></i>
+                        <svg viewBox="0 0 384 512"><path d="M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v256c0 17.7 14.3 32 32 32h256c17.7 0 32-14.3 32-32V224c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM192 352a64 64 0 1 1 0-128 64 64 0 1 1 0 128z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-4">簡単なシステム連携</h3>
                     <p class="text-gray-600">Shopifyをはじめとした主要CMSに簡単に連携できるシンプルな仕組み。技術的な負担なく導入できます。</p>
                 </div>
-                
+
                 <div class="card bg-gray-50 rounded-lg p-6 shadow-sm text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
+                        <svg viewBox="0 0 512 512"><path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-4">オールインワン運用</h3>
                     <p class="text-gray-600">下取り品の買取・物流・査定・販売に至る全てのオペレーションをdoopが実行。貴社の運用負担はゼロです。</p>
                 </div>
-                
+
                 <div class="card bg-gray-50 rounded-lg p-6 shadow-sm text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-coins"></i>
+                        <svg viewBox="0 0 512 512"><path d="M512 80c0 18-14.3 34.6-38.4 48c-29.1 16.1-72.5 27.5-122.3 30.9c-3.7-1.8-7.4-3.5-11.3-5C300.6 137.4 248.2 128 192 128c-8.3 0-16.4 .3-24.5 .8l-.1 0C121.5 131.6 78.1 120.2 48.9 104C24.3 90.6 10 74 10 56c0-36.9 55.8-67.3 126.8-75.7c1.7-.2 3.5-.4 5.2-.5C152.4 3.3 172 0 192 0c56.2 0 108.6 9.4 148 25.9c7.8 3.3 15.2 6.9 22 10.7C408.7 60.7 442 82.5 474.1 80c11.5-.8 22.2 5.5 27.3 16.1C508.7 85.4 512 79.4 512 80zM192 128c-8.3 0-16.4 .3-24.5 .8C121.5 131.6 78.1 143.2 48.9 159.2c-24.6 13.4-38.9 30-38.9 48.8 0 36.9 55.8 67.3 126.8 75.7 1.7 .2 3.5 .4 5.2 .5 10.4 1.5 30 4.8 50 4.8 56.2 0 108.6-9.4 148-25.9 7.8-3.3 15.2-6.9 22-10.7 29.1-16.1 72.5-27.5 122.3-30.9 .6-17.7-13.7-34.3-37.8-47.4-29.1-16.1-72.5-27.5-122.3-30.9-3.7 1.8-7.4 3.5-11.3 5C300.6 164.6 248.2 176 192 176c-8.3 0-16.4-.3-24.5-.8l-.1 0z M192 320c56.2 0 108.6-9.4 148-25.9 7.8-3.3 15.2-6.9 22-10.7v83.2c0 26.5-71.6 48-160 48s-160-21.5-160-48V283.4c6.8 3.8 14.2 7.4 22 10.7C103.4 310.6 155.8 320 192 320z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-4">継続的な運用実現</h3>
                     <p class="text-gray-600">運用のコスト負担が一切ないことによる継続実現性。長期的に安定した下取り施策を展開できます。</p>
@@ -360,20 +203,20 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center">doop導入の効果</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto text-center mt-4">実際の導入企業様で実証された成果</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <div class="card bg-white rounded-lg p-6 shadow-sm text-center">
                     <div class="stat-value">10<span class="text-2xl">%</span></div>
                     <h3 class="text-xl font-bold mb-4">購入CVR平均アップ</h3>
                     <p class="text-gray-600">下取りオプションの提供により、購入決定率が向上。商品ページからのコンバージョンが増加します。</p>
                 </div>
-                
+
                 <div class="card bg-white rounded-lg p-6 shadow-sm text-center">
                     <div class="stat-value">20<span class="text-2xl">%</span></div>
                     <h3 class="text-xl font-bold mb-4">リピート率平均改善</h3>
                     <p class="text-gray-600">下取り実施ユーザーの再購入率が大幅に向上。顧客ロイヤルティが高まり、LTVが増加します。</p>
                 </div>
-                
+
                 <div class="card bg-white rounded-lg p-6 shadow-sm text-center">
                     <div class="stat-value">最短<span class="text-2xl">2</span>週間</div>
                     <h3 class="text-xl font-bold mb-4">運用開始までの期間</h3>
@@ -390,38 +233,38 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center">導入までの簡単3ステップ</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto text-center mt-4">スムーズな導入プロセスで、すぐに効果を実感</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <div class="card bg-gray-50 rounded-lg p-6 shadow-sm text-center">
                     <div class="step-number">1</div>
                     <h3 class="text-xl font-bold mb-4">ヒアリング</h3>
                     <p class="text-gray-600">貴社のニーズや課題をヒアリングし、最適な下取りプログラムを提案いたします。</p>
                     <ul class="text-left mt-4 text-gray-600">
-                        <li class="mb-2"><i class="fas fa-check text-green-600 mr-2"></i> 対象商品のヒアリング</li>
-                        <li class="mb-2"><i class="fas fa-check text-green-600 mr-2"></i> 下取り価格設計の提案</li>
-                        <li><i class="fas fa-check text-green-600 mr-2"></i> 導入計画の策定</li>
+                        <li class="mb-2"><svg class="icon-check" viewBox="0 0 512 512"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg> 対象商品のヒアリング</li>
+                        <li class="mb-2"><svg class="icon-check" viewBox="0 0 512 512"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg> 下取り価格設計の提案</li>
+                        <li><svg class="icon-check" viewBox="0 0 512 512"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg> 導入計画の策定</li>
                     </ul>
                 </div>
-                
+
                 <div class="card bg-gray-50 rounded-lg p-6 shadow-sm text-center">
                     <div class="step-number">2</div>
                     <h3 class="text-xl font-bold mb-4">簡単システム連携</h3>
                     <p class="text-gray-600">自社ECサイトにタグを埋め込むだけ。実装は全てdoop専任担当が行うため貴社負担は一切ございません。</p>
                     <ul class="text-left mt-4 text-gray-600">
-                        <li class="mb-2"><i class="fas fa-check text-green-600 mr-2"></i> Shopifyのほか各種CMS対応</li>
-                        <li class="mb-2"><i class="fas fa-check text-green-600 mr-2"></i> REST API対応</li>
-                        <li><i class="fas fa-check text-green-600 mr-2"></i> 専任エンジニアのサポート</li>
+                        <li class="mb-2"><svg class="icon-check" viewBox="0 0 512 512"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg> Shopifyのほか各種CMS対応</li>
+                        <li class="mb-2"><svg class="icon-check" viewBox="0 0 512 512"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg> REST API対応</li>
+                        <li><svg class="icon-check" viewBox="0 0 512 512"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg> 専任エンジニアのサポート</li>
                     </ul>
                 </div>
-                
+
                 <div class="card bg-gray-50 rounded-lg p-6 shadow-sm text-center">
                     <div class="step-number">3</div>
                     <h3 class="text-xl font-bold mb-4">運用開始</h3>
                     <p class="text-gray-600">下取り対象商品や査定基準のカスタマイズを行い、スムーズに運用を開始。専任サポートがしっかりとバックアップします。</p>
                     <ul class="text-left mt-4 text-gray-600">
-                        <li class="mb-2"><i class="fas fa-check text-green-600 mr-2"></i> 専任スタッフによるオンボーディングサポート</li>
-                        <li class="mb-2"><i class="fas fa-check text-green-600 mr-2"></i> 定期レポート資料による運用モニタリング</li>
-                        <li><i class="fas fa-check text-green-600 mr-2"></i> 継続的な改善提案</li>
+                        <li class="mb-2"><svg class="icon-check" viewBox="0 0 512 512"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg> 専任スタッフによるオンボーディングサポート</li>
+                        <li class="mb-2"><svg class="icon-check" viewBox="0 0 512 512"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg> 定期レポート資料による運用モニタリング</li>
+                        <li><svg class="icon-check" viewBox="0 0 512 512"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg> 継続的な改善提案</li>
                     </ul>
                 </div>
             </div>
@@ -435,7 +278,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center">導入企業の成功事例</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto text-center mt-4">実際にdoopを導入した企業様の成果をご紹介</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                     <div class="p-6">
@@ -470,7 +313,7 @@
                         <p class="text-right mt-2 text-gray-500">- E社 EC事業部 T.S様</p>
                     </div>
                 </div>
-                
+
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                     <div class="p-6">
                         <div class="flex items-center mb-4">
@@ -515,13 +358,11 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center">導入企業の声</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto text-center mt-4">様々な業種の企業様からいただいた評価</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
                 <div class="testimonial">
                     <div class="flex items-start mb-4">
-                        <div class="testimonial-icon">
-                            <span>A</span>
-                        </div>
+                        <div class="testimonial-icon"><span>A</span></div>
                         <div>
                             <h4 class="text-lg font-bold">A.K様</h4>
                             <p class="text-gray-600">ライフスタイルブランド EC担当</p>
@@ -529,12 +370,10 @@
                     </div>
                     <p class="text-gray-700">「導入前は下取りサービスの運用負荷を心配していましたが、実際はほぼすべてdoop側で対応いただけるため、自社リソースをほとんど使わずに運用できています。売上向上にも大きく貢献しています。」</p>
                 </div>
-                
+
                 <div class="testimonial">
                     <div class="flex items-start mb-4">
-                        <div class="testimonial-icon">
-                            <span>M</span>
-                        </div>
+                        <div class="testimonial-icon"><span>M</span></div>
                         <div>
                             <h4 class="text-lg font-bold">M.S様</h4>
                             <p class="text-gray-600">スポーツ用品メーカー CMO</p>
@@ -542,12 +381,10 @@
                     </div>
                     <p class="text-gray-700">「競合他社との差別化を図りたいと思っていたところ、doopの下取りサービスを知りました。導入後は顧客からの評価も高く、リピート率の向上に大きく貢献しています。システム連携も想像以上に簡単でした。」</p>
                 </div>
-                
+
                 <div class="testimonial">
                     <div class="flex items-start mb-4">
-                        <div class="testimonial-icon">
-                            <span>Y</span>
-                        </div>
+                        <div class="testimonial-icon"><span>Y</span></div>
                         <div>
                             <h4 class="text-lg font-bold">Y.T様</h4>
                             <p class="text-gray-600">ベビー・キッズ用品 EC事業部長</p>
@@ -555,12 +392,10 @@
                     </div>
                     <p class="text-gray-700">「成長期の子ども向け商品は使用期間が限られるため、下取りサービスは顧客にとって大きな価値になっています。導入後は購入単価の上昇も見られ、ビジネス面でも大きなメリットを感じています。」</p>
                 </div>
-                
+
                 <div class="testimonial">
                     <div class="flex items-start mb-4">
-                        <div class="testimonial-icon">
-                            <span>K</span>
-                        </div>
+                        <div class="testimonial-icon"><span>K</span></div>
                         <div>
                             <h4 class="text-lg font-bold">K.N様</h4>
                             <p class="text-gray-600">家電メーカー デジタルマーケティング部</p>
@@ -579,52 +414,52 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center">よくある質問</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto text-center mt-4">doop下取りサービスに関するよくあるご質問にお答えします</p>
             </div>
-            
+
             <div class="max-w-3xl mx-auto mt-12">
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>どのような商品が下取り対象になりますか？</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <svg viewBox="0 0 512 512" fill="currentColor"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                     </div>
                     <div class="faq-answer">
                         <p class="text-gray-600">アパレル、小型~中型家電、スマホ・PC類、レジャー用品、バッグ・財布・ジュエリー、おもちゃなど対象は幅広く対応が可能です。大型家具や冷蔵庫・洗濯機などの大型家電は、物流の関係から現時点では対象外となっています。対象商品のカスタマイズも可能ですので、ご相談ください。</p>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>導入にはどれくらいの期間がかかりますか？</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <svg viewBox="0 0 512 512" fill="currentColor"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                     </div>
                     <div class="faq-answer">
                         <p class="text-gray-600">Shopifyなどの主要ECプラットフォームをご利用の場合、最短2週間で導入が可能です。カスタム開発が必要な場合でも、通常4週間程度で導入いただけます。導入までのスケジュールは、初回のヒアリング時に詳しくご案内いたします。</p>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>査定はどのように行われますか？</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <svg viewBox="0 0 512 512" fill="currentColor"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                     </div>
                     <div class="faq-answer">
                         <p class="text-gray-600">下取り商品は専門の査定スタッフが1点ずつ丁寧に査定します。商品カテゴリごとに詳細な査定基準を設けており、公平かつ適正な査定金額を算出します。査定結果はWebやメールで顧客に通知され、承諾後にポイントや現金での還元が行われます。</p>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>物流体制はどうなっていますか？</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <svg viewBox="0 0 512 512" fill="currentColor"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                     </div>
                     <div class="faq-answer">
                         <p class="text-gray-600">全国対応の宅配便と提携しており、顧客は自宅から簡単に下取り品を送ることができます。送料は基本的にdoop側で負担するため、顧客の負担はありません。また、店舗をお持ちの場合は、店頭での回収と連携することも可能です。</p>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>料金体系について教えてください</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <svg viewBox="0 0 512 512" fill="currentColor"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                     </div>
                     <div class="faq-answer">
                         <p class="text-gray-600">導入にかかる実装費用のみで、月額費用無しのため継続的な運用実現が可能です。具体的な費用は、導入規模やカスタマイズ内容によって異なりますので、お問い合わせフォームよりご相談ください。</p>
@@ -641,7 +476,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center">お問い合わせ</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto text-center mt-4">下取りサービス導入についてのご質問・ご相談はこちらから</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
                 <div class="bg-gray-50 p-8 rounded-lg">
                     <h3 class="text-xl font-bold mb-6">お問い合わせフォーム</h3>
@@ -650,17 +485,17 @@
                             <label for="name" class="block text-gray-700 mb-2">お名前 <span class="text-red-500">*</span></label>
                             <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required>
                         </div>
-                        
+
                         <div class="mb-4">
                             <label for="email" class="block text-gray-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
                             <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required>
                         </div>
-                        
+
                         <div class="mb-4">
                             <label for="company" class="block text-gray-700 mb-2">会社名 <span class="text-red-500">*</span></label>
                             <input type="text" id="company" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required>
                         </div>
-                        
+
                         <div class="mb-4">
                             <label for="inquiry" class="block text-gray-700 mb-2">お問い合わせ内容 <span class="text-red-500">*</span></label>
                             <select id="inquiry" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required>
@@ -670,40 +505,40 @@
                                 <option value="talk">サービスについて話を聞きたい</option>
                             </select>
                         </div>
-                        
+
                         <div class="mb-6">
                             <label for="message" class="block text-gray-700 mb-2">ご質問・ご要望</label>
                             <textarea id="message" rows="5" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"></textarea>
                         </div>
-                        
+
                         <div class="mb-6">
                             <label class="flex items-center">
-                                <input type="checkbox" class="form-checkbox h-5 w-5 text-green-600" required>
+                                <input type="checkbox" class="h-5 w-5 text-green-600" required>
                                 <span class="ml-2 text-gray-700">個人情報保護方針に同意します</span>
                             </label>
                         </div>
-                        
+
                         <button type="submit" class="btn-primary w-full">送信する</button>
                     </form>
                 </div>
-                
+
                 <div>
                     <h3 class="text-xl font-bold mb-6">お問い合わせ先</h3>
                     <div class="mb-8">
                         <h4 class="text-lg font-bold mb-2">住所</h4>
                         <p class="text-gray-600">〒105-0001 東京都港区虎ノ門３丁目４−７ 虎ノ門36森ビル 8階</p>
                     </div>
-                    
+
                     <div class="mb-8">
                         <h4 class="text-lg font-bold mb-2">電話番号</h4>
                         <p class="text-gray-600">050-1722-6596</p>
                     </div>
-                    
+
                     <div class="mb-8">
                         <h4 class="text-lg font-bold mb-2">メールアドレス</h4>
                         <p class="text-gray-600">support@slone.jp</p>
                     </div>
-                    
+
                     <div>
                         <h4 class="text-lg font-bold mb-2">サービス対応エリア</h4>
                         <p class="text-gray-600">日本全国（一部離島を除く）</p>
@@ -721,7 +556,7 @@
                     <h3 class="text-xl font-bold text-white mb-4">doop</h3>
                     <p class="text-gray-300 mb-4">ECサイトの売上向上とリピート率改善を実現する下取りサービス</p>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-bold text-white mb-4">会社情報</h3>
                     <p class="text-gray-300 mb-1">〒105-0001</p>
@@ -729,7 +564,7 @@
                     <p class="text-gray-300 mb-1">TEL: 050-1722-6596</p>
                     <p class="text-gray-300">Email: support@slone.jp</p>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-bold text-white mb-4">リンク</h3>
                     <ul>
@@ -738,24 +573,15 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 pt-8">
-                <p class="text-center text-gray-400">© 2025 doop All Rights Reserved.</p>
+                <p class="text-center text-gray-400">&copy; 2025 doop All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // FAQ Accordion
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    question.classList.toggle('active');
-                });
-            });
-        });
+        document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.faq-question').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('active')})})});
     </script>
 </body>
 </html>
